@@ -1,0 +1,8 @@
+<% if object.errors.any? %>
+  <div class="border border-danger">
+    <h5 class="text-center text-danger">Errors</h5>
+    <% object.errors.full_messages.each do |error| %>
+      <div class="text-center"><%= error %></div>
+    <% end %>
+  </div>
+<% end %>

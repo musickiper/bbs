@@ -1,0 +1,22 @@
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <!-- Avatar -->
+  </li>
+
+  <li class="list-group-item font-weight-bold">
+    <%= @user.username %>
+    <!-- User Profile -->
+  </li>
+
+  <li class="list-group-item">
+    <%= @user.email %>
+  </li>
+
+  <li class="list-group-item">
+    <%= link_to "Edit Account", edit_user_path(@user) %>
+  </li>
+
+  <li class="list-group-item">
+    <%= button_to "Delete Account", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+  </li>
+</ul>
