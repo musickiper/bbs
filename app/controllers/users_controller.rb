@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_signin, except: [:new, :create]
+  before_action :require_correct_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -15,7 +18,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user, success: "Thanks for signing up!"
+      session[:user_id] = @user.id
+      redirect_to root_path, success: "Thanks for signing up!"
     else
       render :new
     end
@@ -25,6 +29,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    session[:user_id] = nil
     redirect_to root_path,
                 success: "Your account is successfully deleted!"
   end
@@ -45,6 +50,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def require_correct_user
+    @user = User.find(params[:id])
+    redirect_to root_url unless current_user?(@user)
+  end
 
   def user_params
     params.require(:user)
