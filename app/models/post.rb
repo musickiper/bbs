@@ -5,6 +5,8 @@ class Post < ApplicationRecord
 
   validate :acceptable_image
 
+  self.per_page = 3
+
   private
 
   def acceptable_image
