@@ -2,7 +2,7 @@
   <%= link_to "BBS", root_path, class: "navbar-brand" %>
   <div type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <% if current_user %>
-      <%= current_user.username %>
+      <%= profile_image(current_user, 40, 40) %>
     <% else %>
       <%= link_to "Sign In", signin_path, class: "btn btn-dark" %>
     <% end %>
