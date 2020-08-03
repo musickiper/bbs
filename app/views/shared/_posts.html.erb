@@ -1,8 +1,8 @@
 <div class="posts mt-5">
   <% posts.each do |post| %>
     <div class="post">
-      <%= link_to post, :action => "go" do %>
-        <div class="card">
+      <div class="card">
+        <%= link_to post do %>
           <%= thumbnail_image(post) %>
           <div class="card-body">
             <h5 class="card-title"><%= post.title.truncate(30) %></h5>
@@ -10,18 +10,19 @@
               <div class="text-black-50">
                 <small><%= post.created_at.strftime("%F") %> • 20 comments
                   • <%= pluralize(post.views, "view") %></small>
-                <hr/>
               </div>
-              <div>
-                <%= link_to user_path(post.user), class: "text-dark", :action => 'go' do %>
-                  <%= profile_image(post.user, 20, 20) %>
-                  <small>by <strong><%= post.user.username %></strong></small>
-                <% end %>
-              </div>
-            </div>
-          </div>
+        <% end %>
+        <hr/>
+        <div class="d-flex justify-content-between align-items-center">
+          <%= link_to user_path(post.user), class: "text-dark" do %>
+            <%= profile_image(post.user, 20, 20) %>
+            <small>by <strong><%= post.user.username %></strong></small>
+          <% end %>
+          <span>★ <%= post.likes.count %></span>
         </div>
-      <% end %>
+        </div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

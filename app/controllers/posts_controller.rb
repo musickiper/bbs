@@ -13,6 +13,11 @@ class PostsController < ApplicationController
   def show
     @user = @post.user
     @post.update!(views: @post.views + 1)
+
+    if current_user
+      @like = current_user.likes.find_by(post_id: @post.id)
+    end
+
   end
 
   # GET /posts/new
@@ -73,14 +78,15 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :views, :body, :thumbnail_image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:title, :views, :body, :thumbnail_image)
+  end
 
 end

@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   has_one_attached :thumbnail_image
   has_rich_text :body
   belongs_to :user
+  has_many :likes, dependent: :destroy
 
   validate :acceptable_image
 

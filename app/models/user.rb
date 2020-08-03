@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :email, email: true, presence: true,
             uniqueness: {case_sensitive: false}
