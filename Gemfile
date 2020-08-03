@@ -52,3 +52,6 @@ gem 'simple_form'
 
 # Email Validator
 gem 'email_validator'
+
+# Font Awesome
+gem "font-awesome-rails"

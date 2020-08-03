@@ -4,10 +4,15 @@
 // Action Text
 @import "./actiontext";
 
+// Font Awesome
+@import "font-awesome";
 
 // Modules
+@import "./users";
 @import "./posts";
+@import "./sessions";
 
 body {
   margin: 2rem;
+  background-color: #ebebec;
 }

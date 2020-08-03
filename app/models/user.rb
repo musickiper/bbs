@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one_attached :profile_image
+  has_many :posts, dependent: :destroy
 
   validates :email, email: true, presence: true,
             uniqueness: {case_sensitive: false}
@@ -16,7 +17,7 @@ class User < ApplicationRecord
     return unless profile_image.attached?
 
     unless profile_image.blob.byte_size <= 1.megabyte
-      errors.add(:main_image, "is too big")
+      errors.add(:profile_image, "is too big")
     end
 
     acceptable_types = ["image/jpeg", "image/png"]

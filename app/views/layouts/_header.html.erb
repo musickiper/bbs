@@ -1,8 +1,8 @@
-<nav class="navbar navbar-light">
-  <%= link_to "BBS", root_path, class: "navbar-brand" %>
+<nav class="navbar navbar-light" style="z-index: 5">
+  <%= link_to "BBS", root_path, class: "navbar-brand font-weight-bold", style: "font-size: 3rem" %>
   <div type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <% if current_user %>
-      <%= profile_image(current_user, 40, 40) %>
+      <%= profile_image(current_user, 40, 40) %> <%= fa_icon "angle-down" %>
     <% else %>
       <%= link_to "Sign In", signin_path, class: "btn btn-dark" %>
     <% end %>
@@ -15,7 +15,7 @@
         <%= link_to "My Posts", current_user, class: "text-dark" %>
       </div>
       <div class="nav-item mb-3">
-        <%= link_to "New Post", root_path, class: "text-dark" %>
+        <%= link_to "New Post", new_post_path, class: "text-dark" %>
       </div>
       <% if current_user %>
         <div class="nav-item mb-3">

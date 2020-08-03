@@ -1,12 +1,20 @@
-<div class="d-flex justify-content-center my-5">
-  <%= profile_image(@user, 200, 200) %>
-</div>
-<ul class="list-group">
-  <li class="list-group-item font-weight-bold">
-    <%= @user.username %>
-  </li>
+<div class="container">
+  <div class="d-flex justify-content-center my-5">
+    <%= profile_image(@user, 200, 200) %>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item font-weight-bold">
+      <%= @user.username %>
+    </li>
 
-  <li class="list-group-item">
-    <%= @user.email %>
-  </li>
-</ul>
+    <li class="list-group-item">
+      <%= @user.email %>
+    </li>
+  </ul>
+
+  <div class="d-flex justify-content-center mt-5 font-weight-bold" style="font-size: 2rem">
+    <%= pluralize(@posts.count, "Post") %>
+  </div>
+
+  <%= render "shared/posts", posts: @posts %>
+</div>
