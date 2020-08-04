@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_save :set_slug
+
   has_secure_password
 
   has_one_attached :profile_image
@@ -11,6 +13,10 @@ class User < ApplicationRecord
             uniqueness: {case_sensitive: false}
   validates :password, length: {minimum: 10, allow_blank: true}
   validate :acceptable_image
+
+  def to_param
+    slug
+  end
 
   private
 
@@ -26,6 +32,10 @@ class User < ApplicationRecord
     unless acceptable_types.include?(profile_image.content_type)
       errors.add(:profile_image, "must be a JPEG or PNG")
     end
+  end
+
+  def set_slug
+    self.slug = username.parameterize
   end
 
 end

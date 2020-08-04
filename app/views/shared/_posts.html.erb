@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="post">
       <div class="card">
-        <%= link_to post do %>
+        <%= link_to post_path(post) do %>
           <%= thumbnail_image(post) %>
           <div class="card-body">
             <h5 class="card-title"><%= post.title.truncate(30) %></h5>
