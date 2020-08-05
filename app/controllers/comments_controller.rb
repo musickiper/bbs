@@ -19,7 +19,13 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.save
 
-    redirect_to @post
+    redirect_to @post, success: "Comment has added."
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to post_path(params[:post_id]), success: "Comment has deleted."
   end
 
 end

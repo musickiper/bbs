@@ -14,8 +14,11 @@
         </div>
       <% end %>
       <div class="media-body mt-3">
-        <div class="container">
-          <%= comment.content %>
+        <div class="container d-flex flex-row align-items-center">
+          <div class="mr-5"><%= comment.content %></div>
+          <% if current_user?(user) %>
+            <div><%= button_to "Delete", post_comment_path(@post, comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-danger" %></div>
+          <% end %>
         </div>
 
         <% if subcomments.any? %>
