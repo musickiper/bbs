@@ -46,3 +46,23 @@
   }
 }
 
+.media {
+
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
+
+.card {
+  background-color: white;
+  border-style: none;
+}
+
+#collapseOne {
+  border: 1px solid lightgray;
+}

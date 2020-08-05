@@ -12,6 +12,9 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @user = @post.user
+    @comments = @post.comments
+    @comment = Comment.new
+
     @post.update!(views: @post.views + 1)
 
     if current_user
@@ -38,28 +41,20 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, success: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to @post, success: 'Post was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, success: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to @post, success: 'Post was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -71,10 +66,7 @@ class PostsController < ApplicationController
     end
 
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, success: 'Post was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    redirect_to posts_url, success: 'Post was successfully deleted.'
   end
 
   private

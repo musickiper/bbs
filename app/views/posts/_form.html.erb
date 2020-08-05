@@ -1,5 +1,7 @@
 <%= form_with(model: post, local: true, class: "mt-5") do |form| %>
 
+  <%= render 'shared/errors', object: post %>
+
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <%= form.label :title, class: "input-group-text" %>

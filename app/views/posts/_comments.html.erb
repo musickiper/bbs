@@ -1,0 +1,45 @@
+<% comments.each do |comment| %>
+  <% user = comment.user %>
+  <% subcomments = comment.subcomments %>
+
+  <div class="container">
+    <div class="media d-flex flex-column">
+      <%= link_to user do %>
+        <div class="d-flex">
+          <%= profile_image(user, 50, 50) %>
+          <div class="container">
+            <div class="font-weight-bold"><small><%= user.username %></small></div>
+            <div class="text-black-50"><small><%= comment.created_at.strftime("%F") %></small></div>
+          </div>
+        </div>
+      <% end %>
+      <div class="media-body mt-3">
+        <div class="container">
+          <%= comment.content %>
+        </div>
+
+        <% if subcomments.any? %>
+          <div id="accordion-<%= comment.id %>">
+            <div class="card mt-3" style="background-color: #ebebec">
+              <div id="heading-<%= comment.id %>" class="mb-3 text-success" style="cursor: pointer">
+                <div data-toggle="collapse" data-target="#collapse-<%= comment.id %>" aria-expanded="true" aria-controls="collapse-<%= comment.id %>">
+                  <%= fa_icon "bars", class: "mr-1" %> <%= pluralize(subcomments.count, "Comment") %>
+                </div>
+              </div>
+
+              <div id="collapse-<%= comment.id %>" class="collapse border-left border-success" aria-labelledby="heading-<%= comment.id %>" data-parent="#accordion-<%= comment.id %>">
+                <div class="card-body">
+                  <%= render "posts/comments", comments: subcomments %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= render "posts/commentForm", parent_id: comment.id %>
+
+      </div>
+    </div>
+  </div>
+  <hr/>
+<% end %>

@@ -8,7 +8,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by!(slug: params[:id])
-    @posts = Post.where(:user_id => @user.id).paginate(page: params[:page]).order('created_at DESC')
+
+    case params[:filter]
+    when "likes"
+      @posts = @user.liked_posts.paginate(page: params[:page]).order('created_at DESC')
+    else
+      @posts = Post.where(:user_id => @user.id).paginate(page: params[:page]).order('created_at DESC')
+    end
+
   end
 
   def new

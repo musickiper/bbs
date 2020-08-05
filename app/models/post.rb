@@ -5,9 +5,10 @@ class Post < ApplicationRecord
   has_rich_text :body
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validate :acceptable_image
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: { case_sensitive: false }
 
   self.per_page = 3
 

@@ -33,4 +33,12 @@
 
 <hr/>
 
+<div>
+  <%= render "posts/commentForm", parent_id: '' %>
+</div>
+
+<hr/>
+
+<%= render "posts/comments", comments: @comments.parents %>
+
 <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>

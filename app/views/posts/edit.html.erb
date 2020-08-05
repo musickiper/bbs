@@ -2,6 +2,6 @@
 
 <%= render 'form', post: @post %>
 
-<%= link_to posts_path, class: "text-dark", :action => "go" do %>
+<%= link_to @post, class: "text-dark", :action => "go" do %>
   <%= fa_icon "arrow-left" %> Back
 <% end %>
