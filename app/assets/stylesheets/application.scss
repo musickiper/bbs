@@ -1,0 +1,21 @@
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Action Text
+@import "./actiontext";
+
+// Font Awesome
+@import "font-awesome";
+
+// Pagination
+@import "./pagination";
+
+// Modules
+@import "./users";
+@import "./posts";
+@import "./sessions";
+
+body {
+  margin: 2rem;
+  background-color: #ebebec;
+}

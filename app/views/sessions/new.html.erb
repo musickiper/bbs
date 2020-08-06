@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="text-center">Sign In</h1>
+
+  <%= form_with(url: session_path, local: true) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :email_or_username %>
+      <%= f.text_field :email_or_username, class: "form-control", required: true, autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control", required: true %>
+    </div>
+
+    <p class="text-center">
+      No account yet? <%= link_to "Sign Up", signup_path, class: "text-success" %>
+    </p>
+
+    <div class="d-flex justify-content-center">
+      <%= f.submit "Sign In", class: "btn btn-success" %>
+    </div>
+
+  <% end %>
+
+  <!-- For HRs -->
+  <%= form_with(url: session_path, local: true) do |f| %>
+
+    <%= hidden_field_tag(:email_or_username, "test@example.com") %>
+    <%= hidden_field_tag(:password, "strongpassword") %>
+
+    <div class="d-flex justify-content-center mt-5">
+      <%= f.submit "If you don't want to creat an account, click here using a test account :P", class: "btn btn-link text-success font-weight-bold text-lg" %>
+    </div>
+
+  <% end %>
+</div>

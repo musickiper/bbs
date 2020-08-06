@@ -1,0 +1,29 @@
+<% uuid = SecureRandom.uuid %>
+
+<div id="accordion-<%= uuid %>">
+  <div class="card mt-3" style="background-color: #ebebec">
+    <div id="heading-<%= uuid %>" class="mb-3">
+      <div data-toggle="collapse" data-target="#collapse-<%= uuid %>" aria-expanded="true" aria-controls="collapse-<%= uuid %>">
+        <small style="cursor:pointer"><%= fa_icon "plus-circle", class: "mr-1" %> Add Comment</small>
+      </div>
+    </div>
+
+    <div id="collapse-<%= uuid %>" class="collapse" aria-labelledby="heading-<%= uuid %>" data-parent="#accordion-<%= uuid %>">
+      <div class="card-body">
+        <%= form_with(url: "/posts/#{@post.slug}/comments?parent_id=#{parent_id}", local: true) do |f| %>
+
+          <div class="form-group">
+
+            <%= f.text_field :content, required: true, class: "form-control" %>
+
+          </div>
+
+          <%= f.submit class: "btn btn-dark" %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

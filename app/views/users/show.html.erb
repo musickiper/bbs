@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="d-flex justify-content-center my-5">
+    <%= profile_image(@user, 200, 200) %>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item font-weight-bold text-center" style="background-color: #ebebec">
+      <%= @user.username %>
+    </li>
+
+    <li class="list-group-item text-center" style="background-color: #ebebec">
+      <%= @user.email %>
+    </li>
+  </ul>
+
+  <div class="d-flex justify-content-center mt-5 font-weight-bold" style="font-size: 2rem">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filters
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "Mine", user_path(@user), class: "dropdown-item" %>
+        <%= link_to "Likes", filtered_user_posts_path(@user, "likes"), class: "dropdown-item" %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "shared/posts", posts: @posts %>
+</div>

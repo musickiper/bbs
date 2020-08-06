@@ -1,0 +1,24 @@
+<%= form_with(model: post, local: true, class: "mt-5") do |form| %>
+
+  <%= render 'shared/errors', object: post %>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <%= form.label :title, class: "input-group-text" %>
+    </div>
+    <%= form.text_field :title, class: "form-control", required: true %>
+  </div>
+
+  <div class="input-group mb-3">
+    <%= form.file_field :thumbnail_image, accept: "image/x-png,image/gif,image/jpeg" %>
+    <%= form.label :thumbnail_image, "Choose thumbnail image", class: "custom-file-label" %>
+  </div>
+
+  <div class="field">
+    <%= form.rich_text_area :body, required: true, class: "bg-white customized-min-height" %>
+  </div>
+
+  <div class="actions d-flex justify-content-center">
+    <%= form.submit class: "btn btn-success my-3" %>
+  </div>
+<% end %>
