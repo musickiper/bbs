@@ -42,6 +42,17 @@ require "open-uri"
   File.delete(profile_image_name)
 end
 
+# Test User
+user = User.new(
+    email: "test@example.com",
+    username: "TEST",
+    password: "strongpassword",
+    password_confirmation: "strongpassword"
+)
+
+user.save!
+
+
 puts "Users completely created!"
 
 # 10 Posts

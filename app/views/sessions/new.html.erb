@@ -22,4 +22,16 @@
     </div>
 
   <% end %>
+
+  <!-- For HRs -->
+  <%= form_with(url: session_path, local: true) do |f| %>
+
+    <%= hidden_field_tag(:email_or_username, "test@example.com") %>
+    <%= hidden_field_tag(:password, "strongpassword") %>
+
+    <div class="d-flex justify-content-center mt-5">
+      <%= f.submit "If you don't want to creat an account, click here using a test account :P", class: "btn btn-link text-success font-weight-bold text-lg" %>
+    </div>
+
+  <% end %>
 </div>
