@@ -1,24 +1,38 @@
-# README
+# bbs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple bulletin board system which is built using Ruby on Rails and Google Cloud Platform (GCP)
 
-Things you may want to cover:
+## Table of contents
+- [Demo](#demo)
+- [Documentation](#documentation)
 
-* Ruby version
+## Demo
+<https://jjung-bbs-285802.ue.r.appspot.com/><br><br>
+![screencast](demo.png)
 
-* System dependencies
+## Documentation
 
-* Configuration
+### Tach Stack
+#### Front
+- HTML
+- SASS
+- JavaScript
+- Fontawesome
+- Bootstrap
+- ERB (Rails Template)
 
-* Database creation
+#### Back
+- Ruby on Rails
+- Google Cloud Platform (App Engine, Database, GCS)
 
-* Database initialization
+#### Database
+- PostgreSQL
 
-* How to run the test suite
+### Function
+* User Authentification
+* Create / Read / Update / Delete post 
+* Create / Read / Update / Delete comment
+* Set / Unset like of each post
+* Possible to upload and play videos or images on posts
+* Filtering
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
